@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- Versi model Maven -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Identitas proyek -->
+  <groupId>com.adisrain</groupId>
+  <artifactId>java-maven-app</artifactId>
+  <version>1.1.7</version>
+  <packaging>jar</packaging>
+
+  <!-- Deskripsi opsional -->
+  <name>Java Maven App</name>
+  <description>Simple Java Maven project for Jenkins CI/CD test</description>
+
+  <!-- Properti umum -->
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- Dependency minimal -->
+  <dependencies>
+    <!-- Tambahan JUnit biar gak error waktu mvn test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <!-- Konfigurasi proses build -->
+  <build>
+    <plugins>
+
+      <!-- Plugin Compiler untuk Java -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+      <!-- Plugin JAR biar hasilnya punya .jar.original -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.adisrain.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
